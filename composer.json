@@ -1,0 +1,22 @@
+{
+    "name": "blackcms/pyoris",
+    "description": "The BlackCMS Default Theme Composer Package",
+    "type": "theme",
+    "version": "1.0.0",
+    "homepage": "http://blackcms.pyor.team/themes/pyoris",
+    "keywords": [
+        "theme",
+        "default"
+    ],
+    "authors": [
+        {
+            "name": "Pyor Team",
+            "email": "dev@pyor.team",
+            "homepage": "http://pyor.team"
+        }
+    ],
+    "extra": {
+        "name": "Pyoris",
+        "namespace": "Theme\\Pyoris\\"
+    }
+}
