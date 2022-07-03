@@ -1,5 +1,11 @@
 # BlackCMS/Pyoris
 
+<p align="center">
+    <a href="https://img.shields.io/github/license/blackcms/pyoris"><img src="https://img.shields.io/github/license/blackcms/pyoris"></a>
+    <a href="https://img.shields.io/github/forks/blackcms/pyoris"><img src="https://img.shields.io/github/forks/blackcms/pyoris"></a>
+    <a href="https://img.shields.io/github/issues/blackcms/pyoris"><img src="https://img.shields.io/github/issues/blackcms/pyoris"></a>
+</p>
+
 This is the default theme of **BlackCMS**
 
 ## Usage
