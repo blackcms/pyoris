@@ -1,6 +1,5 @@
 <?php
 
-// Custom routes
 Route::group(
     [
         "namespace" => "Theme\Pyoris\Http\Controllers",
@@ -10,9 +9,6 @@ Route::group(
         Route::group(
             apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []),
             function () {
-                // Add your custom route here
-                // Ex: Route::get('hello', 'PyorisController@getHello');
-
                 Route::get("ajax/search", "PyorisController@getSearch")->name(
                     "public.ajax.search"
                 );

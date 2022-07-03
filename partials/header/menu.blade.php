@@ -18,7 +18,6 @@
     <a href="javascript:void(0);" class="icon" onclick="themeOpenToogle()">
         <i class="fa fa-bars"></i>
     </a>
-    <a class="c-search-toggler close-search"><i class="fa fa-search"></i></a>
 </ul>
 
 @if (is_addon_active('seapp'))

@@ -1,4 +1,4 @@
-@php Theme::set('section-name', __('Search result for: ') . ' "' . Request::input('q') . '"') @endphp
+@php Theme::set('section-name', $tag->name) @endphp
 
 @if ($posts->count() > 0)
     @foreach ($posts as $post)
@@ -27,7 +27,7 @@
         </article>
     @endforeach
     <div class="page-pagination text-right">
-        {!! $posts->withQueryString()->links() !!}
+        {!! $posts->links() !!}
     </div>
 @else
     <div class="alert alert-warning">

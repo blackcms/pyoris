@@ -1,8 +1,8 @@
-@if (is_addon_active('seapp'))
+@if (is_addon_active('blog'))
     @php
-        $properties = get_recent_properties($config['number_display']);
+        $posts = get_recent_posts($config['number_display']);
     @endphp
-    @if ($properties->count())
+    @if ($posts->count())
         @if ($sidebar == 'footer_sidebar')
             <div class="col-lg-3 col-md-3 col-sm-6 col-12">
                 <div class="widget widget--transparent widget__footer">
@@ -14,17 +14,17 @@
                             </div>
                             <div class="widget__content">
                                 <ul @if ($sidebar == 'footer_sidebar') class="list list--light list--fadeIn" @endif>
-                                    @foreach ($properties as $property)
+                                    @foreach ($posts as $post)
                                         <li>
                                             @if ($sidebar == 'footer_sidebar')
-                                                <a href="{{ $property->url }}" data-number-line="2">{{ $property->name }}</a>
+                                                <a href="{{ $post->url }}" data-number-line="2">{{ $post->name }}</a>
                                             @else
-                                                <article class="post post__widget">
-                                                    <div class="post__thumbnail"><img src="{{ MediaManagement::getImageUrl($property->image, 'thumb', false, MediaManagement::getDefaultImage()) }}" alt="{{ $property->name }}">
-                                                        <a href="{{ $property->url }}" class="post__overlay"></a></div>
+                                                <article class="post post__widget clearfix">
+                                                    <div class="post__thumbnail"><img src="{{ MediaManagement::getImageUrl($post->image, 'thumb', false, MediaManagement::getDefaultImage()) }}" alt="{{ $post->name }}">
+                                                        <a href="{{ $post->url }}" class="post__overlay"></a></div>
                                                     <header class="post__header">
-                                                        <h5 class="post__title"><a href="{{ $property->url }}" data-number-line="2">{{ $property->name }}</a></h5>
-                                                        <div class="post__meta"><span class="post__created-at">{{ $property->created_at->translatedFormat('M d, Y') }}</span></div>
+                                                        <h5 class="post__title"><a href="{{ $post->url }}" data-number-line="2">{{ $post->name }}</a></h5>
+                                                        <div class="post__meta"><span class="post__created-at">{{ $post->created_at->translatedFormat('M d, Y') }}</span></div>
                                                     </header>
                                                 </article>
                                             @endif

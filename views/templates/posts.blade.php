@@ -1,5 +1,3 @@
-@php Theme::set('section-name', __('Search result for: ') . ' "' . Request::input('q') . '"') @endphp
-
 @if ($posts->count() > 0)
     @foreach ($posts as $post)
         <article class="post post__horizontal mb-40 clearfix">
@@ -14,13 +12,12 @@
                             <span class="post__author"><i class="ion-android-person"></i><span>{{ $post->author->name }}</span></span>
                         @endif
                         <span class="post-category"><i class="ion-cube"></i>
-                            @if ($post->categories->first())
-                                <a href="{{ $post->categories->first()->url }}">{{ $post->categories->first()->name }}</a>
-                            @endif
-                        </span>
-                    </div>
+                            @foreach($post->categories as $category)
+                                <a href="{{ $category->url }}">{{ $category->name }}</a>@if (!$loop->last),@endif
+                            @endforeach
+                        </span></div>
                 </header>
-                <div class="post__content">
+                <div class="post__content" style="padding: 0">
                     <p data-number-line="4">{{ $post->description }}</p>
                 </div>
             </div>
@@ -29,8 +26,10 @@
     <div class="page-pagination text-right">
         {!! $posts->withQueryString()->links() !!}
     </div>
-@else
-    <div class="alert alert-warning">
-        <p>{{ __('There is no data to display!') }}</p>
-    </div>
 @endif
+
+<style>
+    .section.pt-50.pb-100 {
+        background-color: #ecf0f1;
+    }
+</style>

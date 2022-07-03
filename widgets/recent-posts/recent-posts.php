@@ -2,7 +2,7 @@
 
 use BlackCMS\Widget\AbstractWidget;
 
-class RecentPropertiesWidget extends AbstractWidget
+class RecentPostsWidget extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -14,18 +14,18 @@ class RecentPropertiesWidget extends AbstractWidget
     /**
      * @var string
      */
-    protected $widgetDirectory = "recent-properties";
+    protected $widgetDirectory = 'recent-posts';
 
     /**
-     * RecentPropertiesWidget constructor.
+     * RecentPostsWidget constructor.
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function __construct()
     {
         parent::__construct([
-            "name" => __("Recent properties"),
-            "description" => __("Recent properties widget."),
-            "number_display" => 5,
+            'name'           => __('Recent posts'),
+            'description'    => __('Recent posts widget.'),
+            'number_display' => 5,
         ]);
     }
 }

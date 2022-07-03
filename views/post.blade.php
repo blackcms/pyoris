@@ -1,9 +1,7 @@
 @php
-    Theme::set('section-name', $property->name);
-    $property->loadMissing('metadata');
-
-    $bannerImage = $property->getMetaData('banner_image', true);
-
+    Theme::set('section-name', $post->name);
+    $post->loadMissing('metadata');
+    $bannerImage = $post->getMetaData('banner_image', true);
     if ($bannerImage) {
         Theme::set('breadcrumbBannerImage', MediaManagement::getImageUrl($bannerImage));
     }
@@ -11,55 +9,55 @@
 
 <article class="post post--single">
     <header class="post__header">
-        <h3 class="post__title">{{ $property->name }}</h3>
+        <h3 class="post__title">{{ $post->name }}</h3>
         <div class="post__meta">
-            @if (!$property->locations->isEmpty())
-                <span class="post-location"><i class="ion-cube"></i>
-                    <a href="{{ $property->firstLocation->url }}">{{ $property->firstLocation->name }}</a>
+            @if (!$post->categories->isEmpty())
+                <span class="post-category"><i class="ion-cube"></i>
+                    <a href="{{ $post->firstCategory->url }}">{{ $post->firstCategory->name }}</a>
                 </span>
             @endif
-            <span class="post__created-at"><i class="ion-clock"></i>{{ $property->created_at->translatedFormat('M d, Y') }}</span>
-            @if ($property->author->username)
-                <span class="post__author"><i class="ion-android-person"></i><span>{{ $property->author->name }}</span></span>
+            <span class="post__created-at"><i class="ion-clock"></i>{{ $post->created_at->translatedFormat('M d, Y') }}</span>
+            @if ($post->author->username)
+                <span class="post__author"><i class="ion-android-person"></i><span>{{ $post->author->name }}</span></span>
             @endif
 
-            @if (!$property->taxonomies->isEmpty())
+            @if (!$post->tags->isEmpty())
                 @php
-                    if (is_addon_active('language-advanced')) {
-                        $property->taxonomies->loadMissing('translations');
+                    if (is_plugin_active('language-advanced')) {
+                        $post->tags->loadMissing('translations');
                     }
                 @endphp
                 <span class="post__tags"><i class="ion-pricetags"></i>
-                    @foreach ($property->taxonomies as $taxonomy)
-                        <a href="{{ $taxonomy->url }}">{{ $taxonomy->name }}</a>
+                    @foreach ($post->tags as $tag)
+                        <a href="{{ $tag->url }}">{{ $tag->name }}</a>
                     @endforeach
                 </span>
             @endif
         </div>
     </header>
     <div class="post__content">
-        @if (defined('GALLERY_MODULE_NAME') && !empty($galleries = gallery_meta_data($property)))
-            {!! render_object_gallery($galleries, ($property->first_location ? $property->first_location->name : __('Uncategorized'))) !!}
+        @if (defined('GALLERY_MODULE_SCREEN_NAME') && !empty($galleries = gallery_meta_data($post)))
+            {!! render_object_gallery($galleries, ($post->first_category ? $post->first_category->name : __('Uncategorized'))) !!}
         @endif
-        {!! clean($property->content) !!}
+        {!! BaseHelper::clean($post->content) !!}
         <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
     </div>
-    @php $relatedProperties = get_related_properties($property->id, 2); @endphp
+    @php $relatedPosts = get_related_posts($post->id, 2); @endphp
 
-    @if ($relatedProperties->count())
+    @if ($relatedPosts->count())
         <footer class="post__footer">
             <div class="row">
-                @foreach ($relatedProperties as $relatedItem)
+                @foreach ($relatedPosts as $relatedItem)
                     <div class="col-md-6 col-sm-6 col-12">
                         <div class="post__relate-group @if ($loop->last) post__relate-group--right @endif">
-                            <h4 class="relate__title">@if ($loop->first) {{ __('Previous Property') }} @else {{ __('Next Property') }} @endif</h4>
+                            <h4 class="relate__title">@if ($loop->first) {{ __('Previous Post') }} @else {{ __('Next Post') }} @endif</h4>
                             <article class="post post--related">
                                 <div class="post__thumbnail"><a href="{{ $relatedItem->url }}" class="post__overlay"></a>
                                     <img src="{{ MediaManagement::getImageUrl($relatedItem->image, 'thumb', false, MediaManagement::getDefaultImage()) }}" alt="{{ $relatedItem->name }}">
                                 </div>
                                 <header class="post__header">
                                     <p><a href="{{ $relatedItem->url }}" class="post__title"> {{ $relatedItem->name }}</a></p>
-                                    <div class="post__meta"><span class="post__created-at">{{ $property->created_at->translatedFormat('M d, Y') }}</span></div>
+                                    <div class="post__meta"><span class="post__created-at">{{ $post->created_at->translatedFormat('M d, Y') }}</span></div>
                                 </header>
                             </article>
                         </div>

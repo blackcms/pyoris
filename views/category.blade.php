@@ -1,4 +1,4 @@
-@php Theme::set('section-name', __('Search result for: ') . ' "' . Request::input('q') . '"') @endphp
+@php Theme::set('section-name', $category->name) @endphp
 
 @if ($posts->count() > 0)
     @foreach ($posts as $post)
@@ -13,12 +13,7 @@
                         @if ($post->author->username)
                             <span class="post__author"><i class="ion-android-person"></i><span>{{ $post->author->name }}</span></span>
                         @endif
-                        <span class="post-category"><i class="ion-cube"></i>
-                            @if ($post->categories->first())
-                                <a href="{{ $post->categories->first()->url }}">{{ $post->categories->first()->name }}</a>
-                            @endif
-                        </span>
-                    </div>
+                        <span class="post-category"><i class="ion-cube"></i><a href="{{ $category->url }}">{{ $category->name }}</a></span></div>
                 </header>
                 <div class="post__content">
                     <p data-number-line="4">{{ $post->description }}</p>
@@ -27,7 +22,7 @@
         </article>
     @endforeach
     <div class="page-pagination text-right">
-        {!! $posts->withQueryString()->links() !!}
+        {!! $posts->links() !!}
     </div>
 @else
     <div class="alert alert-warning">
