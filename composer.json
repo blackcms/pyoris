@@ -1,6 +1,6 @@
 {
     "name": "blackcms/pyoris",
-    "description": "The BlackCMS Default Theme Composer Package",
+    "description": "Default theme",
     "type": "theme",
     "version": "1.0.0",
     "homepage": "http://blackcms.pyor.team/themes/pyoris",
