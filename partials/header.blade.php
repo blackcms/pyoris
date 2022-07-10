@@ -15,7 +15,7 @@
         <!-- CSS -->
         <style>
             :root {
-                --color-1st: {{ theme_option('primary_color', '#018cc6') }};
+                --color-1st: {{ theme_option('primary_color', '#1a1a1a') }};
                 --primary-font: '{{ theme_option('primary_font', 'Roboto') }}', sans-serif;
             }
         </style>
