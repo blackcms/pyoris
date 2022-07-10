@@ -1,8 +1,8 @@
 {
     "name": "blackcms/pyoris",
-    "description": "Default theme for BlackCMS",
+    "description": "Default theme",
     "type": "theme",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "homepage": "http://blackcms.pyor.team/themes/pyoris",
     "keywords": [
         "theme",
