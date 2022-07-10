@@ -1,6 +1,6 @@
 @php Theme::layout('no-sidebar') @endphp
 
-<div class="py-5 text-center bg-primary">
+<div class="py-5 text-center" style="background-color: {{ theme_option('primary_color', '#1a1a1a') }};">
     <div class="container py-5">
         <div class="row py-5">
             <div class="mx-auto col-lg-10">

@@ -19,7 +19,7 @@ app()->booted(function () {
             "label" => __("Primary color"),
             "attributes" => [
                 "name" => "primary_color",
-                "value" => "#018cc6",
+                "value" => "#1a1a1a",
             ],
         ])
         ->setField([
